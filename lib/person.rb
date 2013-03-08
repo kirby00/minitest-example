@@ -1,7 +1,7 @@
 class Person
 
   def initialize
-    @bike = nil
+
   end
 
   def has_bike?
@@ -9,15 +9,11 @@ class Person
   end
 
   def take_bike_from(station)
-    @bike = station.release_bike(@bike)
-    # unless has_bike? do |foundbike|
-    #     foundbike = @station.bikes.find(first) 
-        # @bike = station.release_bike(foundbike) 
-    #   end  
-    # end
+    bike = station.bikes.first
+    @bike = station.release_bike(bike)
   end
 
   def return_bike(station)
-    @bike = station<<(bike)
+    @bike = station << @bike
   end
 end

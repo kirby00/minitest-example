@@ -28,16 +28,15 @@ class TestPerson < MiniTest::Unit::TestCase
 
   def test_person_has_bike 
     @station << Bike.new
+    refute @person.has_bike?
     @person.take_bike_from @station
-    assert(@person.has_bike?)
+    assert @person.has_bike?    
   end
 
   def test_person_can_only_have_one_bike_at_a_time
-    # assert(@person.has_bike? == nil)
     2.times{@station<<(Bike.new)}
     @person.take_bike_from @station
     assert_equal 1, @station.number_of_bikes
     assert(@person.has_bike?)
-    # assert_raises(RuntimeError) {@person.take_bike_from @station}
   end
 end
