@@ -1,6 +1,5 @@
 require './lib/location' 
 require './lib/garage' # the class under test
-require './lib/van' 
 require './lib/person' 
 require './lib/station' 
 require './lib/bike'
@@ -43,6 +42,7 @@ class TestGarage < MiniTest::Unit::TestCase
   def test_garage_can_only_release_fixed_bikes
     @garage << @bike.break!
     assert_equal 1, @garage.number_of_bikes
+    @garage.fix(@bike)
     released_bike = @garage.release_bike(@bike)
     refute @bike.broken?
   end

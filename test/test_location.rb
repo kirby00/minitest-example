@@ -1,18 +1,16 @@
 require './lib/location' # the class under test
 require './lib/garage' 
-require './lib/van' 
 require './lib/person' 
 require './lib/station' 
 require './lib/bike'
 require 'minitest/autorun' # the minitest itself
 require 'ansi' # makes it colored
-require 'turn' # improves the default output
+# require 'turn' # improves the default output
 
 class TestLocation < MiniTest::Unit::TestCase
 
   def setup
     @location = Location.new
-   
   end
 
   def test_that_location_can_release_bikes

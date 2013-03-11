@@ -1,7 +1,10 @@
 class Location
-  
-  def initialize
+
+  DEFAULT_CAPACITY = 10
+
+  def initialize(options = {})
     @bikes = []
+    @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
   end
 
   def number_of_bikes
@@ -9,8 +12,12 @@ class Location
   end
 
   def <<(bike) 
-    raise "Bike is already present" if bike_included?(bike)
+    check_bike_can_be_accepted(bike)
     @bikes << bike
+  end
+
+  def check_bike_can_be_accepted(bike)
+    raise "Bike is already present" if bike_included?(bike)
   end
 
   def release_bike(bike)

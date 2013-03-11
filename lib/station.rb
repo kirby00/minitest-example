@@ -1,11 +1,11 @@
 class Station < Location
 
-  DEFAULT_CAPACITY = 10
+  # DEFAULT_CAPACITY = 10
 
-  def initialize(options = {})
-    @bikes = []
-    @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
-  end
+  # def initialize(options = {})
+  #   @bikes = []
+  #   @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
+  # end
   
   def <<(bike)
     raise "Station full" if at_capacity?

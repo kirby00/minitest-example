@@ -2,27 +2,33 @@ class Garage < Location
 
   attr_reader :bikes
 
-  def initialize
-    @bikes = []
-  end
+  DEFAULT_CAPACITY = 20
 
-  def release_bike(bike)
-    @bikes.delete bike #unless bike.broken? 
-  end
+  # def initialize
+  #   @bikes = []
+  # end
 
-  def <<(bike)
-    raise "Bike is already present" if bike_included?(bike)
+  # def release_bike(bike)
+  #   @bikes.delete bike
+  # end
+
+  def check_bike_can_be_accepted(bike)
+    super
     raise "Cannot Accept Working bikes" if !bike.broken?
+  end
+
+  def fix_bikes!
+    @bikes.each{ |bike| fix(bike) }
+  end
+
+  def fix bike
     bike.fix!
-    @bikes << bike
-    
   end
+  # def number_of_bikes
+  #   @bikes.length
+  # end
 
-  def number_of_bikes
-    @bikes.length
-  end
-
-  def bike_included?(bike)
-    @bikes.include?(bike)
-  end
+  # def bike_included?(bike)
+  #   @bikes.include?(bike)
+  # end
 end
