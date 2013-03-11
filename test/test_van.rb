@@ -1,3 +1,4 @@
+require './lib/location' 
 require './lib/van' # the class under test
 require './lib/person' 
 require './lib/station' 

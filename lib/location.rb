@@ -1,4 +1,5 @@
 class Location
+  
   def initialize
     @bikes = []
   end

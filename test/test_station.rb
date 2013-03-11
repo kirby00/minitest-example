@@ -1,3 +1,4 @@
+require './lib/location' 
 require './lib/station' # the class under test
 require './lib/bike'
 require 'minitest/autorun' # the minitest itself
@@ -8,6 +9,16 @@ class TestStation < MiniTest::Unit::TestCase
 
   def setup
     @station = Station.new
+  end
+
+  def test_station_returns_error_if_at_capacity
+    10.times{@station << Bike.new}
+    assert_equal 10,  @station.number_of_bikes    
+    begin
+      @station << Bike.new
+    rescue RuntimeError => e
+      assert_equal "Station full", e.message      
+    end
   end
 
   def test_station_is_empty_after_creation
@@ -33,15 +44,6 @@ class TestStation < MiniTest::Unit::TestCase
     released_bike = @station.release_bike(bike1)
   	assert_equal 9,  @station.number_of_bikes
     assert_equal bike1, released_bike
-  end
-
-  def test_station_cannot_receive_extra_bikes
-    @station = Station.new(:capacity => 20)
-    assert_raises(RuntimeError) {
-      21.times {
-        @station<<(Bike.new)
-      }
-    }
   end
 
   def test_station_returns_bike_broken
