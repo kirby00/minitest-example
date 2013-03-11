@@ -9,8 +9,8 @@ class Person
   end
 
   def take_bike_from(station)
-    bike = station.bikes.first
-    @bike = station.release_bike(bike)
+    bike = station.bikes.first 
+    @bike = station.release_bike(bike) unless bike.broken?
   end
 
   def return_bike(station)

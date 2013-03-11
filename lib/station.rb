@@ -1,4 +1,4 @@
-class Station
+class Station < Location
 
   DEFAULT_CAPACITY = 10
 

@@ -1,4 +1,4 @@
-class Van
+class Van < Location
 
   def initialize
     @bikes = []

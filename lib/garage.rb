@@ -1,4 +1,4 @@
-class Garage
+class Garage < Location
 
   attr_reader :bikes
 

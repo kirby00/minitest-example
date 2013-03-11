@@ -14,11 +14,19 @@ class TestPerson < MiniTest::Unit::TestCase
   end
 
   def test_person_can_take_bike
+    refute @person.has_bike?
     @station<<(Bike.new)
     assert_equal 1, @station.number_of_bikes
     @person.take_bike_from @station
-    assert_equal 0, @station.number_of_bikes
+    assert @person.has_bike?
   end
+
+  def test_person_can_only_take_working_bike
+    @station<<(@bike.break!)
+    assert_equal 1, @station.number_of_bikes
+    @person.take_bike_from @station
+    assert_equal 1, @station.number_of_bikes
+  end  
 
   def test_person_can_return_bike
     @person.has_bike?    

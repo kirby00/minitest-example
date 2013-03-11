@@ -26,7 +26,6 @@ class TestVan < MiniTest::Unit::TestCase
   def test_van_can_return_broken_bikes
     @bike.break!
     @van << @bike
-    #assert (@van.broken_bike)
     assert_equal 1, @van.broken_bikes.length
   end
 
